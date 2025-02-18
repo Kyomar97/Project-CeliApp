@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white p-4 text-center fixed bottom-0 w-full">
+    <footer className="bg-lime-950 text-white p-4 text-center bottom-0 w-full">
       <a
         href="https://github.com/Kyomar97?tab=repositories"
         target="_blank"

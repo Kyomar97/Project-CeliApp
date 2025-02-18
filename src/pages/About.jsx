@@ -5,7 +5,19 @@ function About() {
   return (
     <div className="p-6 bg-white shadow-lg rounded-lg max-w-2xl mx-auto mt-10 text-center">
       <h2 className="text-3xl font-bold mb-4">About This Project</h2>
-      <p className="text-lg text-gray-700">Este proyecto se ha realizado...</p>
+      <div className="mt-6">
+        <img
+          src="https://via.placeholder.com/150" // Reemplazar con imagen o avatar
+          alt="Tu nombre"
+          className="w-24 h-24 mx-auto rounded-full shadow-lg"
+        />
+      </div>
+      <p className="text-lg text-gray-700">
+        Este proyecto se ha realizado con el objetivo de aprender y mejorar mis
+        habilidades en desarrollo web. Utiliza tecnologías modernas como React y
+        Tailwind CSS para crear una interfaz rápida. También tenia como objetivo
+        trabajar con...
+      </p>
 
       <div className="mt-6 flex justify-center space-x-4">
         <a
