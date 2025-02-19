@@ -7,7 +7,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
   return (
     <>
       {/* Sidebar */}
-      <aside className="bg-lime-300 text-white w-64 p-4 fixed h-[calc(100vh-8rem)] mt-20 mb-20 left-0 z-50 overflow-y-auto transition-transform duration-300 ease-in-out">
+      <aside className="bg-lime-200 text-white w-64 p-4 fixed h-[calc(100vh-8rem)] mt-20 mb-20 left-0 z-50 overflow-y-auto transition-transform duration-300 ease-in-out">
         <button
           onClick={() => setSidebarOpen(false)}
           className="absolute top-2 right-4 text-lg font-semibold text-lime-500 hover:text-lime-800 transition-colors"
@@ -23,7 +23,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
               <Link
                 to="/"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-semibold hover:bg-lime-400 hover:text-white rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
               >
                 Home
               </Link>
@@ -32,7 +32,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
               <Link
                 to="/about"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-semibold hover:bg-lime-400 hover:text-white rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
               >
                 About
               </Link>
@@ -41,7 +41,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
               <Link
                 to="/suggestions"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-semibold hover:bg-lime-400 hover:text-white rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
               >
                 Sugerencias
               </Link>
