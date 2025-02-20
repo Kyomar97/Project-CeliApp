@@ -12,6 +12,23 @@ const ProductPage = () => {
   const toggleExpand = (id) => {
     setExpandedId(expandedId === id ? null : id);
   };
+  const buttonDelete = (current) => {
+    deleteFood(current)
+      .then(() => {
+        console.log("Restaurante eliminado");
+        setInitialFood();
+      })
+      .catch((error) => console.error("No se eliminó", error));
+  };
+
+  const startEditing = (id) => {
+    setEditingId(id); // ✅ Mostrar el formulario de edición
+  };
+
+  const closeForm = () => {
+    setEditingId(null); // ✅ Cerrar el formulario de edición
+    setInitialFood(); // ✅ Actualizar la lista de restaurantes después de editar
+  };
 
   return (
     <div className="p-6">
@@ -28,11 +45,39 @@ const ProductPage = () => {
               {product.location || product.locations?.join(", ")}
             </p>
             {expandedId === product.id && (
-              <p className="text-gray-600 mt-2">{product.description}</p>
+              <div>
+                <p className="text-gray-600 mt-2">{product.description}</p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    buttonDelete(currentProduct.id);
+                  }}
+                  className="mt-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                >
+                  Delete
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    startEditing(currentProduct.id);
+                  }}
+                  className="mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition ml-2"
+                >
+                  Edit
+                </button>
+              </div>
             )}
           </div>
         ))}
       </div>
+      {editingId && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-md shadow-lg w-96">
+            <UpdateForm idUpdate={editingId} onClose={closeForm} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

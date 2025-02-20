@@ -1,6 +1,6 @@
 import axios from "axios"; //RECUERDA IMPORTAR SIEMPRE LO QUE NECESITES USAR
 
-export const API_URL = "http://localhost:5005";
+export const API_URL = `${import.meta.env.VITE_API_URL}`;
 
 // READ (.GET) (Permite mostrar la información almacenada en el servidor)
 export const getFood = async () => {
