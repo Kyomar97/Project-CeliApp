@@ -3,22 +3,33 @@ import { getProducts } from "../api/Index";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
+  const [expandedId, setExpandedId] = useState(null);
+
   useEffect(() => {
     getProducts().then((data) => setProducts(data));
   }, []);
 
+  const toggleExpand = (id) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
-    <div>
-      <h1>Productos</h1>
-      <div>
-        {products.map((currentProducts) => (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-6">Productos</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
           <div
-            key={currentProducts.id}
+            key={product.id}
             className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
-            onClick={() => handleItemClick(currentProducts.id)}
+            onClick={() => toggleExpand(product.id)}
           >
-            <h3 className="text-xl font-semibold">{currentProducts.name}</h3>
-            <p className="text-gray-600">{currentProducts.location}</p>
+            <h3 className="text-xl font-semibold">{product.name}</h3>
+            <p className="text-gray-600">
+              {product.location || product.locations?.join(", ")}
+            </p>
+            {expandedId === product.id && (
+              <p className="text-gray-600 mt-2">{product.description}</p>
+            )}
           </div>
         ))}
       </div>
