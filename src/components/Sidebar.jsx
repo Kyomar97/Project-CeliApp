@@ -7,10 +7,10 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
   return (
     <>
       {/* Sidebar */}
-      <aside className="bg-lime-200 text-white w-64 p-4 fixed h-[calc(100vh-8rem)] mt-20 mb-20 left-0 z-50 overflow-y-auto transition-transform duration-300 ease-in-out">
+      <aside className="bg-teal-500 text-white w-64 p-4 fixed h-[calc(100vh-8rem)] mt-20 mb-20 left-0 z-50 overflow-y-auto transition-transform duration-300 ease-in-out">
         <button
           onClick={() => setSidebarOpen(false)}
-          className="absolute top-2 right-4 text-lg font-semibold text-lime-500 hover:text-lime-800 transition-colors"
+          className="absolute top-2 right-4 text-lg font-semibold text-teal-900 hover:text-teal-700 transition-colors"
           aria-label="Close sidebar"
         >
           X
@@ -19,29 +19,29 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
         {/* Sidebar navigation */}
         <nav>
           <ul className="space-y-3 mt-8">
-            <li className="border-b border-lime-500 pb-3">
+            <li className="border-b border-teal-900 pb-3">
               <Link
                 to="/"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-teal-700 hover:text-teal-100 rounded-md px-3 transition-colors"
               >
                 Home
               </Link>
             </li>
-            <li className="border-b border-lime-500 pb-3">
+            <li className="border-b border-teal-800 pb-3">
               <Link
                 to="/about"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-teal-700 hover:text-teal-100 rounded-md px-3 transition-colors"
               >
                 About
               </Link>
             </li>
-            <li className="border-b border-lime-500 pb-3">
+            <li className="border-b border-teal-800 pb-3">
               <Link
                 to="/suggestions"
                 onClick={() => setSidebarOpen(false)}
-                className="block py-3 text-lg font-bold hover:bg-lime-400 hover:text-lime-800 rounded-md px-3 transition-colors"
+                className="block py-3 text-lg font-bold hover:bg-teal-700 hover:text-teal-100 rounded-md px-3 transition-colors"
               >
                 Sugerencias
               </Link>

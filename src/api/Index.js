@@ -34,7 +34,7 @@ export const getGeneralTips = async () => {
 // CREATE (.POST) (Añadir un elemento al servidor)
 export const createFood = async (food) => {
   try {
-    const response = await axios.post("/food_locations", food);
+    const response = await axios.post(`${API_URL}/food_locations`, food);
     return response.data;
   } catch (error) {
     console.error("Error al crear el elemento:", error);
@@ -63,7 +63,10 @@ export const createGeneralTips = async (tips) => {
 // UPDATE (.PUT) (Permite modificar un elemento ya existente en el servidor)
 export const updateFood = async (id, updatedFood) => {
   try {
-    const response = await axios.put(`/food_locations/${id}`, updatedFood);
+    const response = await axios.put(
+      `${API_URL}/food_locations/${id}`,
+      updatedFood
+    );
     return response.data;
   } catch (error) {
     console.error("Error al actualizar el elemento:", error);
@@ -92,7 +95,7 @@ export const updateGeneralTips = async (id, updateGeneralTips) => {
 // DELETE (.DELETE) (Permite eliminar cualquier elemento del servidor)
 export const deleteFood = async (id) => {
   try {
-    const response = await axios.delete(`/food_locations/${id}`);
+    const response = await axios.delete(`${API_URL}/food_locations/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error al eliminar el elemento:", error);

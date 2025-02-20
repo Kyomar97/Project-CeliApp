@@ -1,34 +1,54 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../api/Index"; // Importar la constante API_URL
+import { API_URL, createFood } from "../api/Index";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Suggestions = ({ onAdd }) => {
   // Estados para manejar los campos del formulario
   const [name, setName] = useState("");
   const [type, setType] = useState("restaurant"); // 'restaurant' o 'product'
-  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
   const [address, setAddress] = useState("");
-  const [whereToBuy, setWhereToBuy] = useState(""); // Nuevo campo: Dónde conseguirlo
-  const [recommendation, setRecommendation] = useState("");
+  const [whereToBuy, setWhereToBuy] = useState("");
+  const [description, setDescription] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
-  // Función para manejar el envío del formulario
-  const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newItem = {
+      name,
+      type,
+      location,
+      description,
+    };
+    createFood(newItem)
+      .then((response) => {
+        console.log("Personaje agregado:", response);
+        navigate("/restaurantes");
+      })
+      .catch((err) => {
+        setError(err.message);
+        setSubmitted(false);
+      });
+  };
+
+  /* const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Crear el objeto con los datos del formulario
     const newItem = {
       name,
       type,
-      city,
+      location,
       address,
       whereToBuy,
-      description: recommendation,
+      description,
     };
 
     try {
-      // Enviar la petición al servidor usando axios
+      
       const response = await axios.post(`${API_URL}/items`, newItem, {
         headers: {
           "Content-Type": "application/json",
@@ -41,17 +61,17 @@ const Suggestions = ({ onAdd }) => {
       // Limpiar el formulario y mostrar mensaje de éxito
       setName("");
       setType("restaurant");
-      setCity("");
+      setLocation("");
       setAddress("");
       setWhereToBuy("");
-      setRecommendation("");
+      setDescription("");
       setSubmitted(true);
       setError(null);
     } catch (err) {
       setError(err.message);
       setSubmitted(false);
     }
-  };
+  }; */
 
   return (
     <div className="p-4">
@@ -100,8 +120,8 @@ const Suggestions = ({ onAdd }) => {
             </label>
             <input
               type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               required
             />
@@ -144,8 +164,8 @@ const Suggestions = ({ onAdd }) => {
               Recomendación:
             </label>
             <textarea
-              value={recommendation}
-              onChange={(e) => setRecommendation(e.target.value)}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               rows="4"
               required
