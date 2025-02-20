@@ -5,7 +5,7 @@ import UpdateForm from "../components/UpdateForm";
 const RestaurantPage = () => {
   const [food, setFood] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
-  const [editingId, setEditingId] = useState(null); // ✅ Estado para mostrar el formulario de edición
+  const [editingId, setEditingId] = useState(null);
 
   const setInitialFood = () => {
     getFood()
@@ -42,12 +42,12 @@ const RestaurantPage = () => {
   };
 
   const startEditing = (id) => {
-    setEditingId(id); // ✅ Mostrar el formulario de edición
+    setEditingId(id);
   };
 
   const closeForm = () => {
-    setEditingId(null); // ✅ Cerrar el formulario de edición
-    setInitialFood(); // ✅ Actualizar la lista de restaurantes después de editar
+    setEditingId(null);
+    setInitialFood();
   };
 
   return (
