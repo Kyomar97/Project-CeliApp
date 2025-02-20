@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Suggestions from "./pages/Suggestions";
 import NotFound from "./pages/NotFound";
+import RestaurantPage from "./pages/RestaurantPage";
+import ProductPage from "./pages/ProductPage";
+import TipsPage from "./pages/TipsPage";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -24,6 +27,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/suggestions" element={<Suggestions />} />
+            <Route path="/productos" element={<ProductPage />} />
+            <Route path="/restaurantes" element={<RestaurantPage />} />
+            <Route path="/consejos" element={<TipsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

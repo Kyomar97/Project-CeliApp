@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { API_URL } from "../api/Index"; // Importar la constante API_URL
 
-const Suggestions = () => {
+const Suggestions = ({ onAdd }) => {
   // Estados para manejar los campos del formulario
   const [name, setName] = useState("");
   const [type, setType] = useState("restaurant"); // 'restaurant' o 'product'
@@ -9,13 +11,46 @@ const Suggestions = () => {
   const [whereToBuy, setWhereToBuy] = useState(""); // Nuevo campo: Dónde conseguirlo
   const [recommendation, setRecommendation] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí podrías enviar los datos a una API o manejarlos localmente
-    console.log({ name, type, city, address, whereToBuy, recommendation });
-    setSubmitted(true);
+
+    // Crear el objeto con los datos del formulario
+    const newItem = {
+      name,
+      type,
+      city,
+      address,
+      whereToBuy,
+      description: recommendation,
+    };
+
+    try {
+      // Enviar la petición al servidor usando axios
+      const response = await axios.post(`${API_URL}/items`, newItem, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Llamar a la función onAdd para actualizar la lista en la página Home
+      onAdd(response.data);
+
+      // Limpiar el formulario y mostrar mensaje de éxito
+      setName("");
+      setType("restaurant");
+      setCity("");
+      setAddress("");
+      setWhereToBuy("");
+      setRecommendation("");
+      setSubmitted(true);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      setSubmitted(false);
+    }
   };
 
   return (

@@ -1,6 +1,6 @@
 import axios from "axios"; //RECUERDA IMPORTAR SIEMPRE LO QUE NECESITES USAR
 
-const API_URL = "http://localhost:5005";
+export const API_URL = "http://localhost:5005";
 
 // READ (.GET) (Permite mostrar la información almacenada en el servidor)
 export const getFood = async () => {
@@ -32,27 +32,27 @@ export const getGeneralTips = async () => {
 };
 
 // CREATE (.POST) (Añadir un elemento al servidor)
-export const createFood = async (item) => {
+export const createFood = async (food) => {
   try {
-    const response = await axios.post("/food_location", item);
+    const response = await axios.post("/food_locations", food);
     return response.data;
   } catch (error) {
     console.error("Error al crear el elemento:", error);
     throw error;
   }
 };
-export const createProducts = async (item) => {
+export const createProducts = async (products) => {
   try {
-    const response = await axios.post("/products", item);
+    const response = await axios.post("/products", products);
     return response.data;
   } catch (error) {
     console.error("Error al crear el elemento:", error);
     throw error;
   }
 };
-export const createGeneralTips = async (item) => {
+export const createGeneralTips = async (tips) => {
   try {
-    const response = await axios.post("/general_tips", item);
+    const response = await axios.post("/general_tips", tips);
     return response.data;
   } catch (error) {
     console.error("Error al crear el elemento:", error);
@@ -63,7 +63,7 @@ export const createGeneralTips = async (item) => {
 // UPDATE (.PUT) (Permite modificar un elemento ya existente en el servidor)
 export const updateFood = async (id, updatedFood) => {
   try {
-    const response = await axios.put(`/food_location/${id}`, updatedFood);
+    const response = await axios.put(`/food_locations/${id}`, updatedFood);
     return response.data;
   } catch (error) {
     console.error("Error al actualizar el elemento:", error);
@@ -92,7 +92,7 @@ export const updateGeneralTips = async (id, updateGeneralTips) => {
 // DELETE (.DELETE) (Permite eliminar cualquier elemento del servidor)
 export const deleteFood = async (id) => {
   try {
-    const response = await axios.delete(`/food_location/${id}`);
+    const response = await axios.delete(`/food_locations/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error al eliminar el elemento:", error);
