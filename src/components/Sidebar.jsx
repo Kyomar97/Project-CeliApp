@@ -43,7 +43,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
                 onClick={() => setSidebarOpen(false)}
                 className="block py-3 text-lg font-bold hover:bg-teal-700 hover:text-teal-100 rounded-md px-3 transition-colors"
               >
-                Sugerencias
+                Suggestions
               </Link>
             </li>
           </ul>

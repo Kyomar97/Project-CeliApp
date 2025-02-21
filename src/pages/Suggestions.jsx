@@ -75,7 +75,7 @@ const Suggestions = ({ onAdd }) => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Sugerencias</h1>
+      <h1 className="text-2xl font-bold">Suggestions</h1>
       <p>
         Aquí puedes dejar tus sugerencias de restaurantes o productos sin
         gluten.
