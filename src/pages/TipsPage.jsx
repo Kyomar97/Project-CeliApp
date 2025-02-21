@@ -28,7 +28,7 @@ const TipsPage = () => {
         {tips.map((tip, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-lg p-4 bg-white shadow-md hover:shadow-lg transition-shadow"
+            className="border border-gray-200 bg-teal-100 rounded-lg p-4  shadow-md hover:shadow-lg transition-shadow"
           >
             <div className="flex flex-col space-y-2">
               <h3 className="text-xl font-semibold">Consejo {index + 1}</h3>

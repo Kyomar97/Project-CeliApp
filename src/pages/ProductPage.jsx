@@ -16,11 +16,11 @@ const ProductPage = () => {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Productos</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
         {products.map((product) => (
           <div
             key={product.id}
-            className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            className="border border-gray-200 bg-teal-100 rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => toggleExpand(product.id)}
           >
             <h3 className="text-xl font-semibold">{product.name}</h3>

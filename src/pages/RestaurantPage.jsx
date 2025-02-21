@@ -54,11 +54,11 @@ const RestaurantPage = () => {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Restaurantes</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
         {food.map((currentFood) => (
           <div
             key={currentFood.id}
-            className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
+            className="border border-gray-200 bg-teal-100 rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => toggleExpand(currentFood.id)}
           >
             <h3 className="text-xl font-semibold">{currentFood.name}</h3>
@@ -68,25 +68,27 @@ const RestaurantPage = () => {
               <div>
                 <p className="text-gray-600 mt-2">{currentFood.description}</p>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    buttonDelete(currentFood.id);
-                  }}
-                  className="mt-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
-                >
-                  Delete
-                </button>
+                <div className="flex justify-between mt-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      startEditing(currentFood.id);
+                    }}
+                    className="bg-teal-700 text-white px-3 py-1 rounded hover:bg-teal-800 transition"
+                  >
+                    Edit
+                  </button>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    startEditing(currentFood.id);
-                  }}
-                  className="mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition ml-2"
-                >
-                  Edit
-                </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      buttonDelete(currentFood.id);
+                    }}
+                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             )}
           </div>

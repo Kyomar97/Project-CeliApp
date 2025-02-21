@@ -22,7 +22,7 @@ function App() {
           isSidebarOpen={isSidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
-        <main className="flex-1 p-4">
+        <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
